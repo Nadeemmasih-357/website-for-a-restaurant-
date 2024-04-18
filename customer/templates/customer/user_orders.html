@@ -1,0 +1,49 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user's order </title>
+</head>
+<div>
+    <div class="container mb-5">
+        <style>
+            body {
+                background-image: url('/static/customer/images/classy-floral-blue-backgrounds-wallpapers.jpg');
+                background-repeat: no-repeat;
+                color: rgb(0, 0, 0);
+                background-attachment: fixed;
+                background-size: cover;
+
+            }
+        </style>
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8 col-sm-12 offset-md-1 p-4 text-center">
+
+                <h1 style="font-size: 50px"><b>Your orders history with us</b></h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5" style="background-color: rgba(198, 235, 135, 0.5); color:rgb(5, 2, 2);">
+
+    <div class="row justify-content-center mt-5">
+        {% for order in user_orders %}
+        
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-sm-12 text-center mb-5">
+                <h2>Date Ordered: {{ order.date_added }}</h2>
+                
+                <p style="font-size: 20px; color: blue;"><b>Total Price:{{ order.total_price }}   </b> </p>
+            </div>
+         
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
+</html>

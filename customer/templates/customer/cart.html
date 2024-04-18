@@ -1,0 +1,111 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhatti sons Restaurant</title>
+</head>    
+
+        <style>
+            body {
+                background-image: url('/static/customer/images/classy-floral-blue-backgrounds-wallpapers.jpg');
+                background-repeat: no-repeat;
+                color: rgb(0, 0, 0);
+                background-attachment: fixed;
+                background-size: cover;
+
+            }
+        </style>
+        <div class="container-fluid">  >
+            <div class="container mb-5">
+                <div class="container mb-5" style="background-color:rgba(209, 237, 132, 0.5); color:rgb(0, 0, 0);">
+        
+ 
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8 col-sm-12 offset-md-1 p-4 text-center">
+
+                <h1 style="font-size: 60px"><b>Your Shopping Cart!!</b></h1>
+            </div>
+        </div>
+    <div class="row justify-content-center mt-5">
+        <style>
+            /* Add CSS styles for flex container and items */
+            .product-list {
+                display: flex;
+                flex-wrap: wrap;
+                /* Allow items to wrap to the next row if necessary */
+                justify-content: space-between;
+                /* Space items evenly along the main axis */
+                list-style: none;
+                /* Remove list styles */
+                padding: 0;
+            }
+
+            .product-item {
+
+                flex: 1;
+                /* Grow to fill available space evenly */
+                /* Limit item width to avoid overcrowding */
+                margin: 10px;
+                /* Add spacing between items */
+                border: 1px solid #ccc;
+                /* Add a border for visual separation */
+                padding: 10px;
+                text-align: center;
+            }
+
+            /* Style the "Buy Now" button */
+            .buy-now-button {
+                display: block;
+                margin-top: 10px;
+                background-color: rgb(122, 21, 165);
+                color: #fff;
+                text-decoration: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+        </style>
+
+        <div class="product-list">
+
+            {% for item in cart_items %}
+            <div class="product-item">
+                <img class="rounded" src="{{ item.product.image.url }}" width="200" height="200">
+                <p>{{ item.product.name }} ({{ item.quantity }})</p>
+                <p>Price: ${{ item.product.price }}</p>
+
+                <a class="buy-now-button" href="{% url 'remove_from_cart' item.id %}">Remove from Cart</a>
+            </div>
+            {% empty %}
+            <p>
+            <h5>Your cart is empty. Please continue shopping to add items to your cart.</h5>
+            </p>
+            {% endfor %}
+
+        </div>
+
+        <div style="text-align: center;">
+            <h5><b>Total Price: ${{ total_price }}</b></h5>
+        </div>
+        
+        
+
+        <a class="buy-now-button" style="height:40px;width:160px; background-color:rgba(179, 50, 38, 0.705);"
+            href="{% url 'order' %}">Continue Shopping</a>
+        <p>
+
+        </p>
+
+        <a class="buy-now-button" style="height:40px; width:260px;" href="{% url 'view_order' %}">Make Payment and Confirm order</a>
+
+    </div>
+
+</div>
+</div>
+</div>
+{% endblock content %}
+</html>

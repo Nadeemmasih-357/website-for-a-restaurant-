@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+</head>    
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+<body>
+<div class="container mb-5" style="background-color:rgba(209, 237, 132, 0.5);  color:rgba(0, 0, 0, 0.892);">
+<h1>Contact Us</h1>
+
+    <form action="  " method="post">
+        {% csrf_token %}
+        <label for="name"><b>  Name:  </b></label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="email"><b>Email:    </b></label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="message"><b>  Message:  </b></label><br>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+</body>
+
+
+{% endblock content %}
+</html>

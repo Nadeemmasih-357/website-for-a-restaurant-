@@ -1,0 +1,109 @@
+{% extends 'customer/base.html' %}
+<!-- {% load static %} -->
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>revenue by product</title>
+    <style>
+        .buy-now-button {
+            display: inline-flex;
+            margin-top: 10px;
+            background-color: rgb(231, 59, 226);
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<div>
+    <div class="container mb-5">
+        <div class="container mb-5" style="background-color:rgba(209, 237, 132, 0.5);  color:rgba(0, 0, 0, 0.892);">
+        <style>
+            body {
+                background-image: url('/static/customer/images/cream-asian-floral-backgrounds-wallpapers.jpg');
+                background-repeat: no-repeat;
+                color: rgba(100, 82, 235, 0.86);
+                background-attachment: fixed;
+                background-size: cover;
+
+            }
+        </style>
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8 col-sm-12 offset-md-1 p-4 text-center">
+              
+
+                <h1 style="font-size: 60px"><b>Data Analytics</b></h1>
+                <a class="buy-now-button" style="height:40px;width:160px;" href="{% url 'revenue_products' %}">Top 5  Products</a>
+
+                <a class="buy-now-button" style="height:40px;width:160px;" href="{% url 'revenue_categories' %}">Top 5 Categories</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="width: 900px; height:900px; margin:0 auto;">
+    <div
+        style="width:45%;height:45%; float:right; background-color: white; border: solid 3px green; border-radius: 20px;">
+        <canvas id="pieChart"></canvas>
+
+    </div>
+    <div
+        style="width:45%;height:45%; float:left; background-color: white; border: solid 3px green; border-radius: 20px;">
+        <canvas id="barChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('pieChart');
+
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: {{ products | safe}},
+                datasets: [{
+                    label: 'Top 5 Products by Sale',
+                    data: {{ sales_by_product | safe}},
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                aspectRatio: 1,
+                scales: {
+                y: {
+                     beginAtZero: true
+                }
+            }
+        }
+        });
+    </script>
+    <script>
+        const ctx1 = document.getElementById('barChart');
+
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: {{ products | safe}},
+                datasets: [{
+                label: 'Top 5 Products by Sale',
+                data: {{ sales_by_product | safe}},
+                borderWidth: 1
+                }]
+            },
+            options: {
+                aspectRatio: 1,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                }
+            }
+        }
+        });
+    </script>
+</div>
+</div>
+{% endblock content %}
+
+</html>

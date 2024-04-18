@@ -1,0 +1,222 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhatti sons Restaurant</title>
+    <style>
+     .footer {
+        background-color: #000000;
+        padding: 20px 0;
+        color: #f7efef;
+    }
+    
+    .footer h4 {
+        color: #e6f609;
+    }
+    
+    .footer ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .footer ul li {
+        margin-bottom: 10px;
+    }
+    
+    .footer ul li a {
+        color: hsl(56, 51%, 88%);
+        text-decoration: none;
+    }
+    
+    .footer ul li a:hover {
+        text-decoration: underline;
+    }
+    
+    .footer p {
+        margin-bottom: 10px;
+    }
+    
+    .footer .container {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .footer .row {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    
+    .footer .col-md-3 {
+        width: 25%;
+        float: left;
+        position: relative;
+        min-height: 2px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    
+    .footer .col-md-6 {
+        width: 50%;
+        float: left;
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .navbar-nav li.nav-item a.nav-link {
+    display: flex;
+    align-items: center;
+}
+.navbar.container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+{% load static %}
+  
+<body>     
+    <div class="container-fluid">  
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-info" >
+            
+              <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'customer/images/logo.png' %}"
+                     alt="what image shows" height="100" width="100"></a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                 <ul class="navbar-nav ml-auto" style="font-size: 20px">
+                     <li class="nav-item active">
+                         <a class="nav-link" href="{% url 'home' %}"><b> Home</b></a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{% url 'menu' %}"><b>Menu</b></a>
+                     </li>
+                     {% if not user.is_authenticated %}
+                     <li class="nav-item">
+                         <a class="nav-link" href="{% url 'login' %}"><b>  Login/Register</b></a>
+                     </li>
+                     {% endif %}
+                     <li class="nav-item">
+                         <a class="nav-link" href="{% url 'order' %}"><b> Order</b></a>
+                     </li>
+                     {% if user.is_authenticated %}
+                     {% if user.is_superuser %}
+                     <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             <b> Data Analytics</b>
+                         </a>
+                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                             <a class="dropdown-item" href="{% url 'revenue_products'  %}">Analysis</a>
+                             <a class="dropdown-item" href="{% url 'revenue_forecast'  %}">Predict Future Sales</a>
+                             <a class="dropdown-item" href="#">Order Status</a>
+                         </div>
+                     </li>
+                     {% endif %}
+                     {% endif %}
+                     {% if user.is_authenticated %}
+     
+                     <li class="nav-item">
+                         <a class="nav-link" href="{% url 'logout' %}" style="color: white;">Logout</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{% url 'view_cart' %}" style="color: rgba(7, 0, 0, 0.993);"><img
+                                 src="{% static 'customer/images/cartpic.png' %}" height="50" width="50"></a>
+                     </li>
+     
+                     <li class=" nav-item">
+                         <a class="nav-link" href="{% url 'user_orders' %}" style="color: rgba(7, 0, 0, 0.993);"><b>My Orders</b></a>
+                     </li>
+                     <li class=" nav-item">
+                         <a class="nav-link" href="{% url 'my_account' %}" style="color: rgba(7, 0, 0, 0.993);"><b>My Account</b></a>
+                     </li>
+     
+                     {% endif %}
+                 </ul>
+     
+             </div>
+             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                 <ul class="navbar-nav ml-auto" style="font-size: 20px">
+                   <li class="nav-item active">
+                     <a class="nav-link" href="{% url 'index' %}"><b>About Us</b></a>
+                   </li>
+                   <li class="nav-item active">
+                     <a class="nav-link" href="{% url 'contact' %}"><b>Contact Us</b></span></a>
+                   </li>
+                 </ul>
+             </div>
+       
+         </div> 
+           
+        </nav>
+          
+{% block content %}    
+
+        {% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="col-md-6">
+                            <h4>Terms & conditions</h4>
+                            <ul class="footer-links">
+                                <li><a href="{% url 'privacypolicy' %}">Privacy Policy</a></li>
+                                <li><a href="{% url 'terms' %}">Terms of Service</a></li>
+                                <li><a href="{% url 'accessibility' %}">Accessibility</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <h4>Follow Us</h4>
+                            <li><a href="https://www.facebook.com/yourrestaurant" target="_blank">Facebook</a></li>
+                            <li><a href="https://twitter.com/yourrestaurant" target="_blank">Twitter</a></li>
+                            <li><a href="https://www.instagram.com/yourrestaurant" target="_blank">Instagram</a></li>
+                            <li><a href="https://www.tiktok.com/yourrestaurant" target="_blank">Tiktok</a></li>
+                       </ul>
+                   </div>
+                    <div class="col-md-3 col-sm-6">
+                        <h4>Menu</h4>
+                        <ul>
+                            <li><a href="{% url 'menu' %}">Appetizers</a></li>
+                            <li><a href="{% url 'menu' %}">Drinks</a></li>
+                            <li><a href="{% url 'menu' %}">Desserts</a></li>
+                            <li><a href="{% url 'menu' %}">Entres</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <h4>Contact Us</h4>
+                        <adress>  <p>chack no 117/12.L,<br> kassowal,Punjab,57300<br>Phone: +92 316-0742142<br>  Email  :  masih11712@gmail.com </p</adress>
+                           
+                       <br> <a href="mailto: masih11712@gmail.com" >
+                            Send email</a> 
+                    </div>
+                </div>
+                   
+            
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2024 Bhatti Sons LLC. All rights reserved.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+    </div>   
+       
+</body>
+
+
+</html>

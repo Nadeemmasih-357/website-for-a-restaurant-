@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility - RestaurantSite</title>
+</head>
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+<body>
+    <div class="container mb-5" style="background-color:rgba(209, 237, 132, 0.5);  color:rgba(0, 0, 0, 0.892);">
+
+    <header>
+        <h1>Accessibility</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Accessibility Statement</h2>
+            <p>RestaurantSite is committed to providing a website that is accessible to the widest possible audience, regardless of technology or ability. We strive to adhere to the Web Content Accessibility Guidelines (WCAG) and other accessibility standards.</p>
+        </section>
+
+        <section>
+            <h2>Accessible Design</h2>
+            <p>We have designed our website with accessibility in mind, implementing features such as:</p>
+            <ul>
+                <li>Use of semantic HTML elements</li>
+                <li>Proper labeling of form fields</li>
+                <li>Keyboard navigation support</li>
+                <li>Text alternatives for non-text content</li>
+                <li>Color contrast considerations</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Feedback</h2>
+            <p>We welcome feedback on the accessibility of our website. If you encounter any accessibility barriers or have suggestions for improvement, please let us know by contacting us at [contact@example.com].</p>
+        </section>
+
+        <section>
+            <h2>Accessibility Tools</h2>
+            <p>Below are some tools and resources that may assist users in accessing our website:</p>
+            <ul>
+                <li>Screen readers: Software programs that read aloud text displayed on the screen, such as NVDA, JAWS, and VoiceOver.</li>
+                <li>Browser extensions: Extensions like WAVE, Axe, and HTML_CodeSniffer can help identify accessibility issues on web pages.</li>
+                <li>Zoom and magnification tools: Built-in browser features or third-party tools that allow users to zoom in on content for better readability.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>For further assistance or inquiries regarding accessibility, please contact us at [contact@example.com].</p>
+    </footer>
+    </div>
+</body>
+{% endblock content %}
+</html>

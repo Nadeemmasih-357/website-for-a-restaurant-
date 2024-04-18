@@ -1,0 +1,84 @@
+
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <style>  
+        .container {
+            display: flex;
+            flex-direction: column;
+            
+            height: auto; /* Adjust as needed */
+        }
+    
+    .upper-half {
+        display: flex;
+        flex: 1;
+    }
+    
+    .left-half {
+        flex: 1;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: rgb(234, 202, 230);
+        text-align: left;
+        color: #5d6ea1;
+        align-items: center;
+        padding: auto;
+     
+    } 
+    
+    .right-half {
+        flex: 1;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: rgb(192, 222, 155);
+        text-align: center;
+        color: #1749df;
+    }
+    
+    .lower-half {
+        flex: 1;
+        align-items: center;
+    }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center; font-size: 30px; line-height: 1; display: flex; align-items: center; justify-content: center;"><b><h1>User Information</h1></b></h2>
+
+<div class="container">
+    <div class="upper-half">
+        <div class="left-half">
+            <h4> <b> Username: {{ request.user.username }}    </b></h4>
+            <p><b> Email: {{ request.user.email }}</b></p>
+            <p><b> First Name: {{ request.user.first_name }}</b></p>
+            <p><b> Last Name: {{ request.user.last_name }}</b> </p>
+        
+            <p> <b> Address: {{ request.user.address }}</b> </p>
+            <!-- Add more user information fields as needed -->
+        </div>
+    </div>
+    
+ 
+      <div class="lower-half">
+        <h2 style="text-align: center; font-size: 30px; line-height: 1; display: flex; align-items: center; justify-content: center;"><b><mark> Notice!</mark></b></h2>
+        <h2 style="text-align: left; font-size: 20px; line-height: 1; display: flex; align-items: center; justify-content: left;"><b> your Billing address is considered as your shipping address. Please inform us if you want to shipp your order to any other address.<br><br>Thank you</b></h2>
+
+       
+        <!-- Content for lower section -->
+  
+        </div>
+
+    </div>
+</div>
+</div>
+</body>
+
+
+{% endblock content %}
+</html>

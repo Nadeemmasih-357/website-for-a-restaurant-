@@ -1,0 +1,103 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>order confirmation</title>
+    <style>
+        /* Add CSS styles for flex container and items */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            /* Allow items to wrap to the next row if necessary */
+            justify-content: space-between;
+            /* Space items evenly along the main axis */
+            list-style: none;
+            /* Remove list styles */
+            padding: 0;
+        }
+
+        .product-item {
+
+            flex: 1;
+            /* Grow to fill available space evenly */
+            /* Limit item width to avoid overcrowding */
+            margin: 10px;
+            /* Add spacing between items */
+            border: 1px solid #ccc;
+            /* Add a border for visual separation */
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Style the "Buy Now" button */
+        .buy-now-button {
+            display: block;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<div>
+    <div class="container mb-5">
+        <style>
+            body {
+                background-image: url('/static/customer/images/classy-floral-blue-backgrounds-wallpapers.jpg');
+                background-repeat: no-repeat;
+                color: rgb(0, 0, 0);
+                background-attachment: fixed;
+                background-size: cover;
+
+            }
+        </style>
+<div class="container mb-5" style="background-color:rgba(209, 237, 132, 0.5); color:rgb(0, 0, 0);"></div>
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8 col-sm-12 offset-md-1 p-4 text-center">
+
+                <h3 style="font-size: 60px"><b>Your Order has been confirmed and on its way!!</b></h3>
+
+            </div>
+
+        </div>
+</div>
+<div class="container mb-5" style="background-color:rgba(209, 237, 132, 0.5); color:rgb(0, 0, 0);"></div>
+    
+    <div class="row justify-content-center mt-5">
+       
+        <div class="product-list">
+
+            <div class="product-item">
+
+                {% for item in order_items %}
+
+                <p>{{ item.product.name }} ({{ item.quantity }})</p>
+                <p>Price: ${{ item.product.price }}</p>
+
+
+                {% empty %}
+                <p>Your cart is empty.</p>
+                {% endfor %}
+
+                <h6>Order Total Price: ${{ order_total_price }}</h6>
+                <h5>Order will be shipped to :<u> {{ user_address }} </u></h5>
+                <h5>Thank you {{ user_first_name }} for doing business with us!! We appreciate your business</h5>
+            </div>
+
+        </div>
+
+        <a class="buy-now-button" style="height:40px;width:160px; background-color:green;"
+            href="{% url 'order' %}">Continue Shopping</a>
+    </div>
+
+</div>
+</div>
+
+{% endblock content %}
+</html>
